@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TaskRequest;
 use App\Task;
-use Illuminate\Http\Request;
 
 
 class TasksController extends Controller
@@ -30,28 +30,16 @@ class TasksController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param TaskRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(TaskRequest $request)
     {
         Task::create($request->all());
 
         return redirect(route('tasks.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -61,19 +49,22 @@ class TasksController extends Controller
      */
     public function edit($id)
     {
-
+        return view('tasks.edit',[
+            'task' => Task::findOrFail($id)
+        ]);
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param TaskRequest $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(TaskRequest $request, $id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $task->update($request->all());
+
+        return redirect(route('tasks.index'));
     }
 
     /**
@@ -88,5 +79,20 @@ class TasksController extends Controller
         $task->delete();
 
         return Redirect(route('tasks.index'));
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function updateDone($id)
+    {
+        $task = Task::findOrFail($id);
+
+        $task->done === 0 ? $task->done = 1 : $task->done = 0 ;
+        $task->save();
+
+
+        return redirect(route('tasks.index'));
     }
 }

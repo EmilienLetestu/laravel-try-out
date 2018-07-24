@@ -19,6 +19,11 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/tasks/{id}/update-done', 'TasksController@updateDone')
+    ->where('id', '[0-9]+')
+    ->name('updateDone')
+;
+
 Route::resource('tasks', 'TasksController');
 
 
