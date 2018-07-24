@@ -159,6 +159,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         App\Providers\ValidatorServiceProvider::class,
 
+
     ],
 
     /*

@@ -13,6 +13,7 @@ use Illuminate\Support\ServiceProvider;
 
 class ValidatorServiceProvider extends ServiceProvider
 {
+
     public function boot()
     {
         Validator::extend('word_count', function($attribute, $value, $parameters)
