@@ -18,9 +18,9 @@ class ValidatorServiceProvider extends ServiceProvider
     {
         Validator::extend('word_count', function($attribute, $value, $parameters)
         {
-            $t = explode(" ",$value);
+            $words = explode(" ",$value);
 
-            return count($t) >= $parameters[0] && count($t) <= $parameters[1];
+            return count($words) >= $parameters[0] && count($words) <= $parameters[1];
         });
     }
 

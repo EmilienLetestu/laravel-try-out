@@ -36,12 +36,12 @@ class TaskRequest extends Request
     public function messages()
     {
         return [
-            'name.min'      => '4 caractères minimum',
-            'name.required' => 'Un nom de tâche est requis',
-            'description.required'   => 'Une description de la tâche est requise',
+            'name.min'                => '4 caractères minimum',
+            'name.required'           => 'Un nom de tâche est requis',
+            'description.required'    => 'Une description de la tâche est requise',
             'description.word_count'  => 'La description doit contenir entre 5 et 100 mots',
-            'dead_line.required'     => 'Une date limite est requise',
-            'dead_line.after'        => 'La date ne peut être inférieure à demain'
+            'dead_line.required'      => 'Une date limite est requise',
+            'dead_line.after'         => 'La date ne peut être inférieure à demain'
         ];
     }
 }
