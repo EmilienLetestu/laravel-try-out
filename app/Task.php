@@ -25,7 +25,7 @@ class Task extends Model
      */
     public function setNameAttribute($value)
     {
-        $this->attributes['name'] = $value;
+        $this->attributes['name'] = ucfirst($value);
     }
 
     /**
@@ -39,7 +39,7 @@ class Task extends Model
     /**
      * @param $value
      */
-    public function setDescriptionAttrribute($value)
+    public function setDescriptionAttribute($value)
     {
         $this->attributes['description'] =  $value;
     }
@@ -49,7 +49,10 @@ class Task extends Model
      */
     public function setDoneAttribute($value)
     {
-        $this->attributes['done'] = $value;
+        empty($value) === true ?
+            $this->attributes['done'] = false :
+            $this->attributes['done'] = $value
+        ;
     }
 
     /**
