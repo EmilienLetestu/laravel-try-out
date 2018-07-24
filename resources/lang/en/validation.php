@@ -79,6 +79,7 @@ return [
     'timezone'             => 'The :attribute must be a valid zone.',
     'unique'               => 'The :attribute has already been taken.',
     'url'                  => 'The :attribute format is invalid.',
+    'word_count'            => 'The :attribute must contain between 5 and 100 words',
 
     /*
     |--------------------------------------------------------------------------
