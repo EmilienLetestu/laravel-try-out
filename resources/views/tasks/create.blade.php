@@ -2,6 +2,8 @@
 
     @section('content')
 
+        @include('components.form_errors')
+
         {!! Form::open(['url' => route('tasks.store') ]) !!}
 
            {!! Form::text('name') !!}

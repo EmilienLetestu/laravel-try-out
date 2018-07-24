@@ -35,6 +35,7 @@
                     </td>
                     <td>
                         {{ $task->done }}
+                        <a class="btn btn-primary" href="{{ route('updateDone', $task->id) }}"><i class="fas fa-pen"></i></a>
                     </td>
                     <td>
                         {{ $task->dead_line }}
