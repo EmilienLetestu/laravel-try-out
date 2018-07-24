@@ -10,7 +10,7 @@ class Task extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'dead_line', 'done', 'done'
+        'name', 'dead_line', 'done', 'description'
     ];
 
     /**
